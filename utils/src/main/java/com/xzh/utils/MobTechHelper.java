@@ -17,8 +17,10 @@ import static java.lang.Thread.sleep;
 public class MobTechHelper {
     WebDriver driver;
 
+    MobInfo mobInfo;
 
-    public String getAppKey() {
+
+    public MobInfo getAppKey() {
         //初始化
         driver = initWebDriver();
         //登录
@@ -26,11 +28,11 @@ public class MobTechHelper {
         //进入工作台
         enterWorkStateDirect();
         //创建应用
-        String appKey=  createApp();
-        return appKey;
+       MobInfo mobInfo=  createApp();
+        return mobInfo;
     }
 
-    private String createApp() {
+    private MobInfo createApp() {
         String createAppPath = "/html/body/div[1]/div[2]/div/div/div[2]/div/div/div[1]/button";
 
 
@@ -51,8 +53,31 @@ public class MobTechHelper {
         driver.findElement(By.xpath(btnUploadOkPath)).click();
         String appKeyTextPath = "//*[@id='MobApp']/div[2]/div/div/div[2]/div/div/div[2]/div[2]/ul/li[1]/div/div[1]/div[2]/div[2]";
          sleepUntil(2);
-        String appKey=driver.findElement(By.xpath(appKeyTextPath)).getText();
-        return appKey.replace("App Key ","").trim();
+
+          String addComponentPath="/html/body/div[1]/div[2]/div/div/div[2]/div/div/div[2]/div[2]/ul/li[1]/div/div[2]/div/p/span";
+         driver.findElement(By.xpath(addComponentPath)).click();
+         String addCommitPath="/html/body/div[1]/div[2]/div/div/div[2]/div/div/div[2]/button[2]/span";
+
+         driver.findElement(By.xpath(addCommitPath)).click();
+
+       // String nextPath="/html/body/div[1]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]/button[2]/span";
+      //  driver.findElement(By.xpath(nextPath)).click();
+
+        String appsPath="/html/body/div[1]/div[2]/div/div/div[1]/ul/li[1]/ul/a";
+        driver.findElement(By.xpath(appsPath)).click();
+
+
+
+         driver.findElement(By.xpath(appKeyTextPath)).click();
+
+
+
+         String appKeyDetailPath="/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div";
+         String appSecretDetailPath="/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div";
+         mobInfo=new MobInfo();
+         mobInfo.setAppKey(driver.findElement(By.xpath(appKeyDetailPath)).getText());
+         mobInfo.setAppSecret(driver.findElement(By.xpath(appSecretDetailPath)).getText());
+         return mobInfo;
     }
 
     private String getAppKeyInner() {
@@ -129,7 +154,6 @@ public class MobTechHelper {
     }
 
 
-
     private WebDriver initWebDriver() {
         //初始化
         ChromeOptions options = new ChromeOptions();
@@ -141,8 +165,11 @@ public class MobTechHelper {
 
     public static void main(String[] args) {
         MobTechHelper helper = new MobTechHelper();
-        String appKey = helper.getAppKey();
-        System.out.println(appKey);
+        MobInfo mobInfo = helper.getAppKey();
+        System.out.println(mobInfo);
+        MobGenerator generator=new MobGenerator();
+        generator.generateAppCode(mobInfo.getAppKey(),mobInfo.getAppSecret());
+        generator.generateRootCode();
 
     }
 }

@@ -4,6 +4,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
 
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'commons-io:commons-io:2.7'
+   // implementation 'com.google.guava:guava:24.1'
+
 
 }
 

@@ -1,0 +1,15 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin:'com.mob.sdk'
+
+android{
+
+}
+
+MobSDK {
+    appKey "3471a8688955a"
+    appSecret "2c90cac442de3848b870a3e5ea08d52a"
+    SMSSDK {
+    }
+}
+
+
