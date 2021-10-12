@@ -7,6 +7,8 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'commons-io:commons-io:2.7'
    // implementation 'com.google.guava:guava:24.1'
+    implementation 'org.dom4j:dom4j:2.1.1'
+    implementation 'commons-codec:commons-codec:1.13'
 
 
 }

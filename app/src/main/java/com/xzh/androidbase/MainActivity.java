@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.os.FileUtils;
 import android.view.View;
 
 
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public EasyNavigationBar getNavigationBar() {
+
         return navigationBar;
     }
 

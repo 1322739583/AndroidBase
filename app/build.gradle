@@ -23,6 +23,19 @@ android {
                 // includeCompileClasspath true
             }
         }
+
+
+
+        signingConfigs {
+            debug {
+                storeFile file('/home/xzh/.android/androidbase.jks')
+                storePassword '123456'
+                keyAlias = 'key0'
+                keyPassword '123456'
+            }
+        }
+
+        multiDexEnabled true
     }
 
     compileOptions {
@@ -99,4 +112,6 @@ dependencies {
 
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+
+    implementation 'com.blankj:utilcodex:1.29.0'
 }
