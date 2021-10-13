@@ -10,7 +10,6 @@ dependencies {
     implementation 'org.dom4j:dom4j:2.1.1'
     implementation 'commons-codec:commons-codec:1.13'
 
-
 }
 
 sourceCompatibility = "8"

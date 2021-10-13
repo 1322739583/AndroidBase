@@ -33,7 +33,7 @@ public class SignUtil {
 
 
     public static void main(String[] args) {
-       // ps();
+         ps();
         List<SignModel> signModels = convert2SignList();
         for (SignModel signModel : signModels) {
             boolean variantNotEmpty = StringUtils.isNotEmpty(signModel.getVariant());
