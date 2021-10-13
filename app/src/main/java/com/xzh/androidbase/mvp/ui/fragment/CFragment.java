@@ -1,4 +1,4 @@
-package com.xzh.androidbase.nav.fragment;
+package com.xzh.androidbase.mvp.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.xzh.androidbase.R;
 
-public class EFragment extends Fragment {
+public class CFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_e, null);
+        View view = inflater.inflate(R.layout.fragment_c, null);
         return view;
     }
 }

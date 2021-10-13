@@ -74,7 +74,11 @@ public class ReverseUtil {
      */
     public static void doApkTool() {
         try {
-            String[] cmd = {"sh", "-c", "java -jar " + apktool + " d " + sourceApk + " -o app/build/decompile"};
+            File file=new File("app/build/decompile");
+            if (file.exists()){
+                FileUtils.deleteDirectory(file);
+            }
+            String[] cmd = {"sh", "-c", "java -jar " + apktool + " d " + sourceApk + " -o "+outPath};
             Process p = Runtime.getRuntime().exec(cmd);//创建实例进程执行命令行代码
             p.waitFor();
             p.destroy();
@@ -111,9 +115,7 @@ public class ReverseUtil {
      * 调用jd-gui解析jar包内容
      */
     public static void doJdGui() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+
                 try {
                     String[] cmd = {"sh", "-c", "java -jar " + jdGui +" "+outPath+"/classes.jar >> /dev/null  2>&1"};
                     Process p = Runtime.getRuntime().exec(cmd);//创建实例进程执行命令行代码
@@ -122,16 +124,17 @@ public class ReverseUtil {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-        }).start();
+
 
 
     }
 
     public static void main(String[] args) {
 
-        //
-        ReverseUtil.doDex2Jar();
+        //通过dex2jar直接获取apk的classes.jar文件
+        //ReverseUtil.doApkTool();
+       // ReverseUtil.doDex2Jar();
+        //查看源码
         ReverseUtil.doJdGui();
     }
 }

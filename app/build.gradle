@@ -119,4 +119,6 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 
     implementation 'com.blankj:utilcodex:1.29.0'
+
+    implementation "com.google.guava:guava:31.0.1-android"
 }

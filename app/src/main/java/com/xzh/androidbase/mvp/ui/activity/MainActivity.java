@@ -1,20 +1,20 @@
-package com.xzh.androidbase;
+package com.xzh.androidbase.mvp.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.os.FileUtils;
 import android.view.View;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.next.easynavigation.view.EasyNavigationBar;
-import com.xzh.androidbase.nav.fragment.AFragment;
-import com.xzh.androidbase.nav.fragment.BFragment;
-import com.xzh.androidbase.nav.fragment.CFragment;
-import com.xzh.androidbase.nav.fragment.DFragment;
+import com.xzh.androidbase.R;
+import com.xzh.androidbase.mvp.ui.fragment.AFragment;
+import com.xzh.androidbase.mvp.ui.fragment.BFragment;
+import com.xzh.androidbase.mvp.ui.fragment.CFragment;
+import com.xzh.androidbase.mvp.ui.fragment.DFragment;
 
 import java.util.ArrayList;
 import java.util.List;

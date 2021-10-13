@@ -1,4 +1,4 @@
-package com.xzh.androidbase;
+package com.xzh.androidbase.app;
 
 import android.app.Application;
 

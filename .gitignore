@@ -14,3 +14,4 @@
 .cxx
 /app/debug/
 /app/release/
+/app/src/main/java/com/xzh/androidbase/mvp/model/api/ServiceGenerator.java
