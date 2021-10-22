@@ -26,8 +26,9 @@ import java.util.List;
  * Mvp模式的起点是View
  */
 public class AFragment extends Fragment implements HomeContract.View<HomePresenter> {
-    RecyclerView recyclerView;
-    private HomePresenter presenter;
+    RecyclerView recyclerView=null;
+    private HomePresenter presenter=null;
+
 
     @Nullable
     @Override
@@ -62,13 +63,20 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
 
     @Override
     public void showError(Throwable e) {
-          Toast.makeText( getContext(), "e:" + e, Toast.LENGTH_SHORT).show();
-    }
+     }
+
 
     @Override
     public void setPresenter(HomePresenter presenter) {
         this.presenter=presenter;
     }
 
+public void test(int a,int b){
 
+      //  int b;
+    System.out.println("");
+    System.out.println("");
+
+    System.out.println();//1.213s 0.894s 1.7s 1.74s 2.56s 2.67 2.
+}
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+//import static com.google.common.base.Preconditions.checkNotNull;
 
 
 public class HomePresenter extends BasePresenter {
@@ -26,9 +26,10 @@ public class HomePresenter extends BasePresenter {
      * @param model
      */
     public HomePresenter(HomeContract.View view, HomeContract.Model model) {
-        this.view = checkNotNull(view,"MVP view can't be null");
-        this.model = checkNotNull(model,"MVP model can't be null");
-
+     //   this.view = checkNotNull(view,"MVP view can't be null");
+      //  this.model = checkNotNull(model,"MVP model can't be null");
+      this.view=view;
+      this.model=model;
         //这个非常关键，就是在这里将View和Presenter关联上的
         this.view.setPresenter(this);
     }

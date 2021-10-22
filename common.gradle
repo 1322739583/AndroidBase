@@ -25,6 +25,18 @@ android {
                // includeCompileClasspath true
             }
         }
+
+        lintOptions {
+          //  checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+           // abortOnError false
+           // check 'NewApi'
+            // disable 'GoogleAppIndexingWarning','TypographyFractions', 'TypographyQuotes'
+          //  baseline file("lint-baseline.xml") // your choice of filename/path here
+
+            tasks.lint.enabled = false
+        }
     }
 
     compileOptions {
@@ -57,4 +69,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    testImplementation 'junit:junit:4.12'
 }

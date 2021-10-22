@@ -11,6 +11,10 @@ public class Repo {
         this.name = name;
     }
 
+    public Repo(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Repo{" +

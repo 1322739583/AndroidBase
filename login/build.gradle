@@ -1,4 +1,5 @@
 apply from:"../common.gradle"
+//apply plugin: 'com.getkeepsafe.dexcount'
 
 android{
    // resourcePrefix "login_"
@@ -9,4 +10,5 @@ dependencies {
 
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 }

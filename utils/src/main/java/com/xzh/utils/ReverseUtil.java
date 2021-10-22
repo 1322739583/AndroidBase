@@ -32,7 +32,7 @@ public class ReverseUtil {
     /**
      *  一般这个名字是加上日期的，可以当作解压包名
      */
-    private static String apkName = "app-release.apk";
+    private static String apkName = "app-beta1-202110181246.apk";
 
     /**
      * 需要反编译的Apk包
@@ -101,6 +101,9 @@ public class ReverseUtil {
                 FileUtils.deleteQuietly(file);
             }
             String[] cmd = {"sh", "-c", " sh " + dex2jar + " -f "+ sourceApk +" -o "+outPath+"/classes.jar >> /dev/null  2>&1  "};
+            for (String s : cmd) {
+                System.out.print(s+" ");
+            }
             Process p = Runtime.getRuntime().exec(cmd);//创建实例进程执行命令行代码
             p.waitFor();
             p.destroy();
@@ -133,7 +136,7 @@ public class ReverseUtil {
 
         //通过dex2jar直接获取apk的classes.jar文件
         //ReverseUtil.doApkTool();
-       // ReverseUtil.doDex2Jar();
+       ReverseUtil.doDex2Jar();
         //查看源码
         ReverseUtil.doJdGui();
     }

@@ -3,7 +3,9 @@ package com.xzh.androidbase.mvp.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
@@ -11,6 +13,13 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.next.easynavigation.view.EasyNavigationBar;
 import com.xzh.androidbase.R;
+
+import com.xzh.androidbase.app.App;
+import com.xzh.androidbase.di.component.DaggerAppComponent;
+import com.xzh.androidbase.di.component.DaggerUserComponent;
+import com.xzh.androidbase.mvp.model.api.service.RepoService;
+import com.xzh.androidbase.mvp.model.entry.Repo;
+import com.xzh.androidbase.mvp.model.entry.User;
 import com.xzh.androidbase.mvp.ui.fragment.AFragment;
 import com.xzh.androidbase.mvp.ui.fragment.BFragment;
 import com.xzh.androidbase.mvp.ui.fragment.CFragment;
@@ -19,8 +28,35 @@ import com.xzh.androidbase.mvp.ui.fragment.DFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+
 @Route(path = "/app/MainActivity")
 public class MainActivity extends AppCompatActivity {
+    @Inject
+    User user;
+
+    @Inject
+    User user2;
+    @Inject
+    Retrofit retrofit;
+
+    @Inject
+    OkHttpClient client;
+
+    @Inject
+    RepoService repoService;
+
+    @Inject
+    RepoService repoService2;
+
+    @Inject
+    RepoService repoService3;
+
+//    @Inject
+//    Repo repo;
 
     private EasyNavigationBar navigationBar;
 
@@ -37,6 +73,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+       //App.getAppComponent().inject(this);
+     //  App.getAppComponent().setValue(this);
+       App.getUserComponent().inject(this);
+     //   DaggerAppComponent.create().setValue(this);
+
+      //  DaggerUserComponent.builder().appComponent(App.getAppComponent()).build().inject(this);
+
+        Log.d("MainActivity", "user:" + user);
+        Log.d("MainActivity", "user2:" + user2);
+        Log.d("MainActivity", "retrofit:" + retrofit);
+        Log.d("MainActivity", "repoService1:" + repoService);
+        Log.d("MainActivity", "repoService2:" + repoService2);
+        Log.d("MainActivity", "repoService3:" + repoService3);
+      //  Log.d("MainActivity", "repo:" + repo);
+
         navigationBar = findViewById(R.id.navigationBar);
 
         fragments.add(new AFragment());
@@ -52,14 +105,24 @@ public class MainActivity extends AppCompatActivity {
                 .canScroll(true)
                 .build();
 
+        startActivity(new Intent( MainActivity.this,SecondActivity.class));
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity", "user2:" + user2);
     }
 
     public EasyNavigationBar getNavigationBar() {
 
+        String str=new String();
+
+
         return navigationBar;
     }
-
 
 
     public void login(View view) {
