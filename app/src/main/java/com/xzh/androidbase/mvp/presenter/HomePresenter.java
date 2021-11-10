@@ -23,40 +23,20 @@ public class HomePresenter extends BasePresenter {
     /**
      * Presenter同时关联View和Model
      * @param view
-     * @param model
+     *
      */
-    public HomePresenter(HomeContract.View view, HomeContract.Model model) {
+    public HomePresenter(HomeContract.View view) {
      //   this.view = checkNotNull(view,"MVP view can't be null");
       //  this.model = checkNotNull(model,"MVP model can't be null");
       this.view=view;
-      this.model=model;
+      this.model=new HomeModel();
         //这个非常关键，就是在这里将View和Presenter关联上的
         this.view.setPresenter(this);
     }
 
 
     public void onLoadData(){
-        model.initData().subscribe(new Observer<List<Repo>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(List<Repo> repos) {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                   view.showError(e);
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+       model.initData();
     }
 
 

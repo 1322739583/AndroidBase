@@ -15,7 +15,7 @@ public interface HomeContract {
     }
 
     interface Model{
-        Observable<List<Repo>> initData();
+        void initData();
        void refreshDate();
        void loadMoreData();
     }

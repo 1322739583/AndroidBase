@@ -23,6 +23,6 @@ import dagger.Component;
 @Component(modules = {UserModule.class},dependencies = AppComponent.class)
 public interface UserComponent {
 
-    void inject(MainActivity mainActivity);
-    void inject(SecondActivity secondActivity);
+     void inject(MainActivity mainActivity);
+   // void inject(SecondActivity secondActivity);
 }

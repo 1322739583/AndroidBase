@@ -15,8 +15,7 @@ import com.next.easynavigation.view.EasyNavigationBar;
 import com.xzh.androidbase.R;
 
 import com.xzh.androidbase.app.App;
-import com.xzh.androidbase.di.component.DaggerAppComponent;
-import com.xzh.androidbase.di.component.DaggerUserComponent;
+
 import com.xzh.androidbase.mvp.model.api.service.RepoService;
 import com.xzh.androidbase.mvp.model.entry.Repo;
 import com.xzh.androidbase.mvp.model.entry.User;

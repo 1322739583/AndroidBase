@@ -22,12 +22,15 @@ import com.xzh.androidbase.mvp.ui.adapter.HomeAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Mvp模式的起点是View
  */
 public class AFragment extends Fragment implements HomeContract.View<HomePresenter> {
     RecyclerView recyclerView=null;
-    private HomePresenter presenter=null;
+   //  @Inject
+     HomePresenter presenter;
 
 
     @Nullable
@@ -46,6 +49,11 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
         HomeAdapter adapter=new HomeAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
         adapter.setNewData(list);
+
+        presenter=new HomePresenter(this);
+
+        presenter.onLoadData();
+
 
         return view;
     }
@@ -71,12 +79,5 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
         this.presenter=presenter;
     }
 
-public void test(int a,int b){
 
-      //  int b;
-    System.out.println("");
-    System.out.println("");
-
-    System.out.println();//1.213s 0.894s 1.7s 1.74s 2.56s 2.67 2.
-}
 }
