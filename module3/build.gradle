@@ -8,4 +8,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.alibaba:arouter-api:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+    androidTestImplementation 'junit:junit:4.12'
 }

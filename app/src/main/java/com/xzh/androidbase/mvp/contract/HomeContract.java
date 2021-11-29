@@ -12,6 +12,8 @@ public interface HomeContract {
         void hideLoading();
         void showError(Throwable e);
         void setPresenter(T presenter);
+
+        void updata(List list);
     }
 
     interface Model{

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzh.androidbase.R;
 import com.xzh.androidbase.mvp.contract.HomeContract;
+import com.xzh.androidbase.mvp.model.HomeModel;
 import com.xzh.androidbase.mvp.presenter.HomePresenter;
 import com.xzh.androidbase.mvp.ui.activity.MainActivity;
 import com.xzh.androidbase.mvp.ui.adapter.HomeAdapter;
@@ -27,10 +28,12 @@ import javax.inject.Inject;
 /**
  * Mvp模式的起点是View
  */
-public class AFragment extends Fragment implements HomeContract.View<HomePresenter> {
+public class AFragment extends Fragment implements HomeContract.View<HomePresenter>  {
     RecyclerView recyclerView=null;
    //  @Inject
-     HomePresenter presenter;
+    HomePresenter presenter;
+
+    HomeAdapter adapter;
 
 
     @Nullable
@@ -38,21 +41,27 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, null);
         recyclerView=view.findViewById(R.id.recycler);
-        List<String> list=new ArrayList<>();
-        for (int i = 0; i <50 ; i++) {
-            list.add("item"+i);
-        }
+//        List<String> list=new ArrayList<>();
+//        for (int i = 0; i <50 ; i++) {
+//            list.add("item"+i);
+//        }
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        HomeAdapter adapter=new HomeAdapter(new ArrayList<>());
+
+        adapter = new HomeAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
-        adapter.setNewData(list);
+
+
 
         presenter=new HomePresenter(this);
 
+
+
+        //先获取数据，可以在这里获取list的内容
         presenter.onLoadData();
+
 
 
         return view;
@@ -71,7 +80,8 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
 
     @Override
     public void showError(Throwable e) {
-     }
+
+    }
 
 
     @Override
@@ -79,5 +89,9 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
         this.presenter=presenter;
     }
 
+    @Override
+    public void updata(List list) {
+          adapter.setNewData(list);
+    }
 
 }

@@ -16,6 +16,7 @@ import com.xzh.androidbase.R;
 
 import com.xzh.androidbase.app.App;
 
+import com.xzh.androidbase.base.BaseActivity;
 import com.xzh.androidbase.mvp.model.api.service.RepoService;
 import com.xzh.androidbase.mvp.model.entry.Repo;
 import com.xzh.androidbase.mvp.model.entry.User;
@@ -33,7 +34,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
 @Route(path = "/app/MainActivity")
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @Inject
     User user;
 
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 .canScroll(true)
                 .build();
 
-        startActivity(new Intent( MainActivity.this,SecondActivity.class));
+      // startActivity(SecondActivity.class);
 
 
     }

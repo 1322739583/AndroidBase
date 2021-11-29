@@ -3,7 +3,6 @@ package com.xzh.androidbase.mvp.model;
 import android.util.Log;
 
 import com.xzh.androidbase.app.SimpleObserver;
-import com.xzh.androidbase.di.component.DaggerAppComponent;
 import com.xzh.androidbase.mvp.contract.HomeContract;
 import com.xzh.androidbase.mvp.model.api.ServiceGenerator;
 import com.xzh.androidbase.mvp.model.api.service.RepoService;
@@ -11,20 +10,18 @@ import com.xzh.androidbase.mvp.model.entry.Repo;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class HomeModel implements HomeContract.Model {
+public class HomeModel<T>  implements HomeContract.Model {
 
     private HomeCallBack callBack;
 
 
-
-
+    public void setCallBack(HomeCallBack callBack) {
+        this.callBack = callBack;
+    }
 
     @Override
     public void initData() {
@@ -41,6 +38,7 @@ public class HomeModel implements HomeContract.Model {
                     @Override
                     public void onNext(List<Repo> repos) {
                        Log.d("HomeModel", "repos:" + repos);
+                       callBack.onComplete(repos);
                     }
                 });
 
@@ -57,9 +55,12 @@ public class HomeModel implements HomeContract.Model {
     }
 
 
-    interface HomeCallBack{
+    /**
+     * 这个接口是没有问题的，必须要有。但可以简化，比如只有一个onComplete方法，表示数据请求完成了。
+     */
+    public  interface HomeCallBack{
         void onStart();
-        void onComplete();
+        void onComplete(List t);
         void onError(Throwable e);
         void onNext();
     }
