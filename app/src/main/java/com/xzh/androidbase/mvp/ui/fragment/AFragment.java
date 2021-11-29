@@ -28,7 +28,7 @@ import javax.inject.Inject;
 /**
  * Mvp模式的起点是View
  */
-public class AFragment extends Fragment implements HomeContract.View<HomePresenter>  {
+public class AFragment extends Fragment implements HomeContract.View<HomePresenter,List>  {
     RecyclerView recyclerView=null;
    //  @Inject
     HomePresenter presenter;
@@ -41,46 +41,19 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, null);
         recyclerView=view.findViewById(R.id.recycler);
-//        List<String> list=new ArrayList<>();
-//        for (int i = 0; i <50 ; i++) {
-//            list.add("item"+i);
-//        }
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-
         adapter = new HomeAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-
-
         presenter=new HomePresenter(this);
-
-
-
         //先获取数据，可以在这里获取list的内容
         presenter.onLoadData();
 
-
-
         return view;
-    }
-
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError(Throwable e) {
-
     }
 
 
@@ -90,8 +63,14 @@ public class AFragment extends Fragment implements HomeContract.View<HomePresent
     }
 
     @Override
-    public void updata(List list) {
-          adapter.setNewData(list);
+    public void initData(List data) {
+        adapter.setNewData(data);
     }
+
+    @Override
+    public void updateData(List data) {
+
+    }
+
 
 }

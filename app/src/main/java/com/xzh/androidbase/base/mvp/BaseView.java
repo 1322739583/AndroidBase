@@ -9,5 +9,4 @@ public class BaseView<T>  implements IView<T>{
     }
 
 
-
 }

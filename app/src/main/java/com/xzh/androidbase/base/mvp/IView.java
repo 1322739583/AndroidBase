@@ -6,4 +6,18 @@ public interface IView<T> {
      * @param presenter
      */
     void setPresenter(T presenter);
+
+    /**
+     * 显示加载
+     */
+    default void showLoading() {
+
+    }
+
+    /**
+     * 隐藏加载
+     */
+    default void hideLoading() {
+
+    }
 }
